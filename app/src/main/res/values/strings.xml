@@ -6,4 +6,8 @@
     <string name="login_button_text">Login</string>
     <string name="login_fail_message">Login Failed. Wrong Username or Password</string>
     <string name="login_success_message">Login Success</string>
+    <string name="sample_product_name">Product Name</string>
+    <string name="sample_product_date">2024–02–29</string>
+    <string name="sample_product_price">$ 45</string>
+    <string name="product_image_description">Product Image</string>
 </resources>

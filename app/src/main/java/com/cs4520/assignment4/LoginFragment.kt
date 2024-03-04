@@ -30,8 +30,9 @@ class LoginFragment : Fragment() {
         viewModel.result.observe(viewLifecycleOwner) { result ->
             if (result == LoginViewModel.LoginResult.SUCCESS) {
                 clearInputs()
-                findNavController().navigate(R.id.productListFragment)
                 displayToast(R.string.login_success_message)
+                viewModel.reset()
+                findNavController().navigate(R.id.productListFragment)
             }
 
             if (result == LoginViewModel.LoginResult.FAIL) {
