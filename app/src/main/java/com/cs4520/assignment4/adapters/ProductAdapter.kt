@@ -24,22 +24,29 @@ class ProductAdapter: ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDif
         fun bind(product: Product) {
             currentProduct = product
             productNameTextView.text = product.name
-            if (product.date == null) {
-                productDateTextView.visibility = View.GONE
-            } else {
-                productDateTextView.text = product.date
-            }
+            productDateTextView.text = product.date
+            productDateTextView.visibility = if (product.date == null) View.GONE else View.VISIBLE
             productPriceTextView.text = "$ " + product.price.toString()
-            when (product) {
-                is Product.Equipment -> {
-                    productImageView.setImageResource(R.drawable.equipment)
-                    itemView.setBackgroundResource(R.color.light_red)
-                }
+//            when (product) {
+//                is Product.Equipment -> {
+//                    productImageView.setImageResource(R.drawable.equipment)
+//                    itemView.setBackgroundResource(R.color.light_red)
+//                }
+//
+//                is Product.Food -> {
+//                    productImageView.setImageResource(R.drawable.food)
+//                    itemView.setBackgroundResource(R.color.light_yellow)
+//                }
+//            }
 
-                is Product.Food -> {
-                    productImageView.setImageResource(R.drawable.food)
-                    itemView.setBackgroundResource(R.color.light_yellow)
-                }
+            if (product.type == "Equipment") {
+                productImageView.setImageResource(R.drawable.equipment)
+                itemView.setBackgroundResource(R.color.light_red)
+            }
+
+            if (product.type == "Food") {
+                productImageView.setImageResource(R.drawable.food)
+                itemView.setBackgroundResource(R.color.light_yellow)
             }
         }
     }
