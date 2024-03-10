@@ -20,3 +20,6 @@
 - Pagination
   - Use button to increment/decrement the page number in the view model, and make request for the
     new page data based on the new current page 
+
+## Build
+- Tested the app using Pixel 7 API 34 (Android 14.0 arm64)
