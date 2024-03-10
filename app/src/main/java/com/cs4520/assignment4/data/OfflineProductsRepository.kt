@@ -1,14 +1,9 @@
 package com.cs4520.assignment4.data
 
 import android.content.Context
-import android.util.Log
-import androidx.lifecycle.viewModelScope
 import com.cs4520.assignment4.Util
 import com.cs4520.assignment4.api.RetrofitInstance
 import com.cs4520.assignment4.model.Product
-import com.cs4520.assignment4.viewmodels.ProductListViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 
 class OfflineProductsRepository(private val productDao: ProductDao, private val context: Context): ProductsRepository {
     override suspend fun insertAll(products: List<Product>, page: Int) {

@@ -3,7 +3,6 @@ package com.cs4520.assignment4
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
 
 object Util {
     fun isInternetAvailable(context: Context): Boolean {

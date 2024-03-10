@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cs4520.assignment4.data.ProductsRepository
 import com.cs4520.assignment4.model.Product
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlin.Exception
 

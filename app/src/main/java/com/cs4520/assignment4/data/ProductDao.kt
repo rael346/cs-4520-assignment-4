@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import com.cs4520.assignment4.model.Product
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProductDao {

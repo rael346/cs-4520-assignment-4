@@ -1,15 +1,12 @@
 package com.cs4520.assignment4
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.StringRes
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.cs4520.assignment4.adapters.ProductAdapter
 import com.cs4520.assignment4.databinding.FragmentProductListBinding
 import com.cs4520.assignment4.viewmodels.ProductListViewModel

@@ -1,7 +1,6 @@
 package com.cs4520.assignment4.data
 
 import com.cs4520.assignment4.model.Product
-import kotlinx.coroutines.flow.Flow
 
 interface ProductsRepository {
     suspend fun insertAll(products: List<Product>, page: Int)
