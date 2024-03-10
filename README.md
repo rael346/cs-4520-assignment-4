@@ -1,5 +1,7 @@
 # Assignment 4: API Adventures 
 
+[source](https://github.com/rael346/cs-4520-assignment-4)
+
 ## Project Structure
 - `adapters`: contains the adapters for RecyclerView
 - `api`: contains the services for getting data from the API 
