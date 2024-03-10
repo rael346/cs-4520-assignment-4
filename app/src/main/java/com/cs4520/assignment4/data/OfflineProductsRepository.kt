@@ -18,8 +18,10 @@ class OfflineProductsRepository(private val productDao: ProductDao, private val 
 
     override suspend fun getProductsOnPage(page: Int): List<Product> {
         return if (Util.isInternetAvailable(context)) {
-            val response = RetrofitInstance.productService.getProducts(0)
+            val response = RetrofitInstance.productService.getProducts(page)
             if (response.isSuccessful && response.body() != null) {
+                // mainly for the data to remain fresh whenever we fetch from the API
+                productDao.deleteProductsOnPage(page)
                 productDao.insertAll(response.body()!!.map { it.toEntity(page)})
                 response.body()!!
             } else {

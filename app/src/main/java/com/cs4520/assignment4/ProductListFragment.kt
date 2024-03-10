@@ -27,7 +27,6 @@ class ProductListFragment : Fragment() {
         val productAdapter = ProductAdapter()
 
         binding.productList.adapter = productAdapter
-        viewModel.fetchProducts()
 
         viewModel.state.observe(viewLifecycleOwner) {
             when(it) {
@@ -42,17 +41,24 @@ class ProductListFragment : Fragment() {
                 }
 
                 ProductListViewModel.State.FAIL -> {
-                    binding.progressBar.visibility = View.GONE
                     binding.noProductMessage.visibility = View.GONE
+                    binding.progressBar.visibility = View.GONE
                     displayToast(viewModel.errorMessage)
                 }
 
                 ProductListViewModel.State.LOADING -> {
-                    binding.progressBar.visibility = View.VISIBLE
                     binding.noProductMessage.visibility = View.GONE
+                    binding.progressBar.visibility = View.VISIBLE
                 }
             }
         }
+
+        viewModel.currentPage.observe(viewLifecycleOwner) {
+            binding.pageNum.text = it.toString()
+        }
+
+        binding.productPagePrev.setOnClickListener { viewModel.decrementPage() }
+        binding.productPageNext.setOnClickListener { viewModel.incrementPage() }
 
         return binding.root
     }

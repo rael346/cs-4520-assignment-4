@@ -17,16 +17,31 @@ class ProductListViewModel(private val productsRepository: ProductsRepository): 
     val state: MutableLiveData<State> = MutableLiveData<State>(State.LOADING)
     var errorMessage: String? = null
     val products: MutableLiveData<List<Product>> = MutableLiveData<List<Product>>()
+    val currentPage: MutableLiveData<Int> = MutableLiveData(1)
 
-    fun fetchProducts() {
+    init {
+        getProducts(1)
+    }
+    private fun getProducts(page: Int) {
         viewModelScope.launch {
             try {
-                products.value = productsRepository.getProductsOnPage(1)
+                state.value = State.LOADING
+                products.value = productsRepository.getProductsOnPage(page)
                 state.value = State.SUCCESS
             } catch (e: Exception) {
                 state.value = State.FAIL
                 errorMessage = e.message
             }
         }
+    }
+
+    fun incrementPage() {
+        currentPage.value = currentPage.value!! + 1
+        getProducts(currentPage.value!!)
+    }
+
+    fun decrementPage() {
+        currentPage.value = currentPage.value!! - 1
+        getProducts(currentPage.value!!)
     }
 }

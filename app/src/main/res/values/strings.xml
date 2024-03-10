@@ -11,4 +11,7 @@
     <string name="sample_product_price">$ 45</string>
     <string name="product_image_description">Product Image</string>
     <string name="no_product_message">No Product Available</string>
+    <string name="default_page_num">1</string>
+    <string name="page_prev_button_desc">Prev Button</string>
+    <string name="page_next_button_desc">Next Button</string>
 </resources>
