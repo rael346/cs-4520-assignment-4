@@ -1,39 +1,31 @@
 package com.cs4520.assignment4.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cs4520.assignment4.api.RetrofitInstance
+import com.cs4520.assignment4.data.ProductsRepository
 import com.cs4520.assignment4.model.Product
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import java.io.IOException
+import kotlin.Exception
 
-class ProductListViewModel: ViewModel() {
+class ProductListViewModel(private val productsRepository: ProductsRepository): ViewModel() {
     enum class State {
         LOADING, SUCCESS, FAIL
     }
 
     val state: MutableLiveData<State> = MutableLiveData<State>(State.LOADING)
+    var errorMessage: String? = null
     val products: MutableLiveData<List<Product>> = MutableLiveData<List<Product>>()
 
     fun fetchProducts() {
         viewModelScope.launch {
-            val response = try {
-                RetrofitInstance.productService.getProducts(0)
-            } catch (e: IOException) {
-                Log.e("ProductList", "IOException, you might not have internet connection")
-                state.value = State.FAIL
-                return@launch
-            }
-
-            if(response.isSuccessful && response.body() != null) {
-                Log.i("ProductList", response.body().toString())
-                products.value = response.body()
+            try {
+                products.value = productsRepository.getProductsOnPage(1)
                 state.value = State.SUCCESS
-            } else {
-                Log.e("ProductList", "Response not successful")
+            } catch (e: Exception) {
                 state.value = State.FAIL
+                errorMessage = e.message
             }
         }
     }

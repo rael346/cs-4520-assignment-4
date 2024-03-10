@@ -30,4 +30,15 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/no_product_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_product_message"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/productList"
+        app:layout_constraintEnd_toEndOf="@+id/productList"
+        app:layout_constraintStart_toStartOf="@+id/productList"
+        app:layout_constraintTop_toTopOf="@+id/productList" />
 </androidx.constraintlayout.widget.ConstraintLayout>

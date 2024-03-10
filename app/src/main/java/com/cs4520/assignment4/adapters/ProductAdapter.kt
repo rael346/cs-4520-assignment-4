@@ -1,6 +1,5 @@
 package com.cs4520.assignment4.adapters
 
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,20 +23,9 @@ class ProductAdapter: ListAdapter<Product, ProductAdapter.ViewHolder>(ProductDif
         fun bind(product: Product) {
             currentProduct = product
             productNameTextView.text = product.name
-            productDateTextView.text = product.date
-            productDateTextView.visibility = if (product.date == null) View.GONE else View.VISIBLE
+            productDateTextView.text = product.expiryDate
+            productDateTextView.visibility = if (product.expiryDate == null) View.GONE else View.VISIBLE
             productPriceTextView.text = "$ " + product.price.toString()
-//            when (product) {
-//                is Product.Equipment -> {
-//                    productImageView.setImageResource(R.drawable.equipment)
-//                    itemView.setBackgroundResource(R.color.light_red)
-//                }
-//
-//                is Product.Food -> {
-//                    productImageView.setImageResource(R.drawable.food)
-//                    itemView.setBackgroundResource(R.color.light_yellow)
-//                }
-//            }
 
             if (product.type == "Equipment") {
                 productImageView.setImageResource(R.drawable.equipment)

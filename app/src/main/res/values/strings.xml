@@ -10,4 +10,5 @@
     <string name="sample_product_date">2024–02–29</string>
     <string name="sample_product_price">$ 45</string>
     <string name="product_image_description">Product Image</string>
+    <string name="no_product_message">No Product Available</string>
 </resources>
